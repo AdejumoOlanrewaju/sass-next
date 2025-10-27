@@ -7,7 +7,7 @@ const posts = [
     author: "Alex Rodriguez",
     date: "Dec 12, 2024",
     readTime: "8 min read",
-    category: "Web Development",
+    category: "Web development",
     tags: ["React", "JavaScript", "Patterns"],
     image:
       "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -25,7 +25,7 @@ This article covers compound components and render props... (placeholder content
     author: "Dr. Emily Watson",
     date: "Dec 10, 2024",
     readTime: "15 min read",
-    category: "AI/ML",
+    category: "AI",
     tags: ["Python", "FastAPI", "AWS", "ML"],
     image:
       "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

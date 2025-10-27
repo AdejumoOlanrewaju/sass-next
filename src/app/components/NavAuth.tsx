@@ -6,12 +6,12 @@ import { auth, signIn, signOut } from "../../../auth"
 
 // define server actions here
 export async function handleSignIn() {
-  "use server"
+  // "use server"
   await signIn()
 }
 
 export async function handleSignOut() {
-  "use server"
+  // "use server"
   await signOut()
 }
 

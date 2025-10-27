@@ -5,42 +5,42 @@ import React, { useState } from 'react';
 import posts from '@/lib/post';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { usePostStore } from '@/store/PostStore';
 
 const PostCategory = () => {
   // dynamically extract categories from posts
-  const categories = ["All", ...new Set(posts.map((p) => p.category))];
-
+  const { storePostData } = usePostStore()
+  const categories = ["All", ...new Set(storePostData.map((p) => p.category))];
+  console.log(categories)
   const pathname = usePathname();
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   return (
-    <section className="w-full">
+    <section className="w-full lg:w-[65%]">
       {/* Category Buttons */}
-      <div className="flex items-center space-x-2 mb-6 overflow-x-auto pb-2">
+      <div className="flex flex-wrap items-center gap-3 mb-6 overflow-x-auto pb-2">
         {categories.map((category) => {
           const slug = category.toLowerCase().replace(/\s+/g, "-");
           return (
-            <Link
-              key={category}
-              href={category === "All" ? "/" : `/category/${slug}`}
-              onClick={() => setSelectedCategory(category)}
-            >
+      
               <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-colors ${selectedCategory === category
-                    ? "bg-blue-600 text-white"
-                    : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600"
+                  ? "bg-blue-600 text-white"
+                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600"
                   }`}
               >
                 {category}
               </button>
-            </Link>
           );
         })}
       </div>
 
       {/* Posts Grid */}
       <div className="grid gap-6">
-        {posts
+        {storePostData
+          .slice(0, 4)
           .filter((post) =>
             selectedCategory === "All"
               ? true
@@ -75,12 +75,12 @@ const PostCategory = () => {
                 {post.excerpt}
               </p>
 
-              <div className="flex justify-between items-center">
+              <div className="flex flex-wrap gap-2 justify-between items-center">
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   By {post.author}
                 </span>
                 <div className="flex items-center space-x-2">
-                  {post.tags.slice(0, 2).map((tag, i) => (
+                  {post.tags?.split(",").map((tag, i) => (
                     <span
                       key={i}
                       className="flex items-center space-x-1 text-xs text-blue-600 dark:text-blue-400"

@@ -1,9 +1,11 @@
+
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
 
 @theme inline {
   --color-background: var(--background);
@@ -131,9 +133,34 @@ button{
 
 @layer utilities{
   .category-head{
-    @apply bg-gray-300 p-4 text-white text-2xl;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+    @apply bg-blue-900 p-4 text-white text-2xl;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+
+@layer customStyles{
+  .content-container ol,
+  .content-container ul{
+    padding-left: 40px;
+    list-style-type: circle;
+    margin-top: 10px;
+  }
+
+  .content-container h1{
+    font-size : 2rem;
+  }
+
+  .content-container h2{
+    font-size : 1.8rem;
+  }
+
+  .content-container h3{
+    font-size : 1.4rem;
+  }
+
+  .content-container p.empty{
+      line-height: 1.1;
   }
 }
 
