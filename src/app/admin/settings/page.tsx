@@ -1,7 +1,7 @@
 import { Settings } from 'lucide-react'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <div className='min-h-screen w-full flex flex-col items-center justify-center'>
         <div className="flex flex-col items-center justify-center lg:ml-64">
@@ -12,4 +12,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

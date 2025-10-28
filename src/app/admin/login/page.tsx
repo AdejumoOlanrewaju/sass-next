@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation';
 import { adminLogin } from '@/lib/authService';
 import { getFirebaseErrorMessage } from '@/lib/utils';
 
-const page = () => {
+const Page = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -20,14 +20,12 @@ const page = () => {
     const [loading, setLoading] = useState(false)
     const formRef = useRef<HTMLFormElement>(null)
     const router = useRouter()
-    const [googleSignin, setGoogleSignin] = useState(false)
     const reset = () => {
         setEmail("");
         setPassword("");
         formRef.current?.reset();
     }
 
-    console.log("GoogleSignin: ", googleSignin)
     const handleLogin = async (e: React.FormEvent) => {
 
         e.preventDefault();
@@ -148,7 +146,7 @@ const page = () => {
                                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold h-12 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 group"
                                 disabled={loading}
                             >
-                                {loading && !googleSignin ? (
+                                {loading ? (
                                     <span className="flex items-center justify-center">
                                         <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
                                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
@@ -174,4 +172,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

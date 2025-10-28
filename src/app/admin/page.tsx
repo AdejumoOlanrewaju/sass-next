@@ -35,7 +35,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '@/lib/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import { logoutAdmin } from '@/lib/authService';
-export default function page() {
+export default function Page() {
   const [subscribers, setSubsribers] = useState<any>([])
   const [engagementRate, setEngagementRate] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);

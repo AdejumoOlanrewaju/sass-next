@@ -20,7 +20,7 @@ import {
 import { getUserInfo } from '@/lib/authService';
 import LoadingOverlay from '@/app/components/LoadingOverlay';
 import { UserInfoType } from '@/app/types/types';
-const page = () => {
+const Page = () => {
   const [userData, setUserData] = useState<UserInfoType[]>([])
   const [loading, setLoading] = useState<boolean>(false)
   useEffect(() => {
@@ -131,7 +131,7 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
 
 
 

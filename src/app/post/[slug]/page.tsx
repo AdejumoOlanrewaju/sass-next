@@ -1,15 +1,17 @@
 import React from "react";
-import posts from "@/lib/post";
 import PostDetail from "@/app/components/PostDetail";
 import type { Metadata } from "next";
-
-export const metadataBase = new URL("https://telexblog.vercel.app");
+import { ResolvingMetadata } from "next";
+import posts from "@/lib/post";
+// export const metadataBase = new URL("https://telexblog.vercel.app");
 
 // 🧠 Generate SEO metadata dynamically
 export async function generateMetadata(
-  { params }: { params: { slug: string } }
-): Promise<Metadata> {
-  const post = posts.find((p) => p.slug === params.slug);
+  { params }: { params: Promise<{ slug: string }>}
+): Promise<any> {
+  console.log(posts)
+  const slugVar =  (await params).slug
+  const post = posts.find((p) => p.slug === slugVar);
 
   if (!post) {
     return {
@@ -26,7 +28,7 @@ export async function generateMetadata(
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://telexblog.vercel.app/posts/${params.slug}`,
+      url: `https://telexblog.vercel.app/posts/${slugVar}`,
       siteName: "TelexBlog",
       images: [
         {
@@ -48,8 +50,8 @@ export async function generateMetadata(
 }
 
 // 🧩 Post page
-const Post = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+const Post =  async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
 
   return (
     <>
