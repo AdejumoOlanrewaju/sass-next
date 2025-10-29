@@ -88,7 +88,7 @@ const Page = () => {
                             Welcome Back
                         </CardTitle>
                         <CardDescription className="text-gray-600 text-base">
-                            Sign in to continue and react to amazing content
+                            Login to continue, for admin only
                         </CardDescription>
                     </CardHeader>
 
