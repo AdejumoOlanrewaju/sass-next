@@ -173,10 +173,10 @@ export default function LoginPage() {
                                 </div>
                             </div>
                             <CardTitle className="text-3xl font-bold text-gray-800">
-                                Welcome Back
+                                Sign Up
                             </CardTitle>
                             <CardDescription className="text-gray-600 text-base">
-                                Sign in to continue writing amazing content
+                                Signup to continue and react to amazing contents
                             </CardDescription>
                         </CardHeader>
 
