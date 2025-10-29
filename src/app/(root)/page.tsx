@@ -16,7 +16,6 @@ export default function Home() {
   if(loading || storePostData.length === 0){
     return <LoadingOverlay/>
   }
-  console.log(user)
   return (
     <div className="mx-auto max-w-[1560px] font-sans flex flex-col justify-items-center min-h-screen sm:p-8 pb-20 gap-16 px-3">
       <Hero/>

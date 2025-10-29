@@ -2,7 +2,6 @@
 
 import { Calendar, Clock, Tag } from 'lucide-react';
 import React, { useState } from 'react';
-import posts from '@/lib/post';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { usePostStore } from '@/store/PostStore';
@@ -11,8 +10,6 @@ const PostCategory = () => {
   // dynamically extract categories from posts
   const { storePostData } = usePostStore()
   const categories = ["All", ...new Set(storePostData.map((p) => p.category))];
-  console.log(categories)
-  const pathname = usePathname();
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   return (
@@ -20,7 +17,6 @@ const PostCategory = () => {
       {/* Category Buttons */}
       <div className="flex flex-wrap items-center gap-3 mb-6 overflow-x-auto pb-2">
         {categories.map((category) => {
-          const slug = category.toLowerCase().replace(/\s+/g, "-");
           return (
       
               <button

@@ -26,7 +26,6 @@ export default function LoginPage() {
         formRef.current?.reset();
     }
 
-    console.log("GoogleSignin: ", googleSignin)
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!email || !password) {
@@ -45,7 +44,6 @@ export default function LoginPage() {
             toast.success("Logged in successfully!");
             setTimeout(() => {
                 router.push("/")
-                console.log(user)
             }, 500)
         } catch (error: any) {
             const errorMsg = getFirebaseErrorMessage(error.message)
@@ -65,7 +63,6 @@ export default function LoginPage() {
             await storeUserInfo(user)
             setTimeout(() => {
                 router.push("/")
-                console.log(user)
             }, 500)
         } catch (error: any) {
             const errorMsg = getFirebaseErrorMessage(error.message)
@@ -74,7 +71,6 @@ export default function LoginPage() {
         } finally {
             reset()
         }
-        console.log("GoogleSignin: ", googleSignin)
     }
 
 

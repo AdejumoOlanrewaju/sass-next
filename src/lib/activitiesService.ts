@@ -39,7 +39,6 @@ export const getActivities = (callback: (activities: Activities[]) => void) => {
         }));
         callback(activitiesData as Activities[]);
 
-        console.log(activitiesData)
     });
     return unsubscribe;
 }

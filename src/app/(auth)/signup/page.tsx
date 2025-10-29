@@ -71,7 +71,6 @@ export default function LoginPage() {
         } finally {
             reset()
         }
-        console.log("GoogleSignin: ", googleSignin)
     }
 
     return (

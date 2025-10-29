@@ -1,5 +1,4 @@
 "use client"
-import posts from '@/lib/post';
 import { usePostStore } from '@/store/PostStore';
 import Link from 'next/link'
 import React from 'react'
@@ -7,7 +6,6 @@ import React from 'react'
 const CategorySidebar = () => {
      const { storePostData } = usePostStore()
      const categories = ["All", ...new Set(storePostData.map((p) => p.category))];
-     console.log(categories)
     return (
         <div className='w-full lg:w-[35%] border rounded-[10px] h-fit'>
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
