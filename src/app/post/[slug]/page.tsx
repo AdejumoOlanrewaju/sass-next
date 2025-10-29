@@ -1,7 +1,7 @@
 import React from "react";
 import PostDetail from "@/app/components/PostDetail";
 import type { Metadata } from "next";
-import { getPostMetadata } from "@/lib/utils";
+import { getPostMetadata } from "@/lib/postMetadata";
 // export const metadataBase = new URL("https://telexblog.vercel.app");
 
 // 🧠 Generate SEO metadata dynamically
