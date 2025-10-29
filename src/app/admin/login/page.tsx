@@ -69,7 +69,7 @@ const Page = () => {
         <div className='flex items-center justify-center w-full'>
             <div className='flex items-center'>
                 {/* Right side - Login form */}
-                <Card className="w-[90%] max-w-[600px] mx-auto border-gray-200 bg-white shadow-2xl">
+                <Card className="w-[90%] sm:w-[500px] mx-auto border-gray-200 bg-white shadow-2xl">
                     <CardHeader className="space-y-1 text-center pb-8">
                         <div className="flex justify-center mb-6">
                             <div className="relative">
@@ -85,10 +85,10 @@ const Page = () => {
                             </div>
                         </div>
                         <CardTitle className="text-3xl font-bold text-gray-800">
-                            Welcome Back
+                            Welcome Back Admin
                         </CardTitle>
                         <CardDescription className="text-gray-600 text-base">
-                            Login to continue, for admin only
+                            Login to continue 
                         </CardDescription>
                     </CardHeader>
 
