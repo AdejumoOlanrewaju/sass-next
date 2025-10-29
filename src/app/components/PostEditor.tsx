@@ -1,9 +1,6 @@
 "use client"
 
-import { useState } from "react"
-import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 import dynamic from "next/dynamic"
-import { db } from "@/lib/firebaseConfig"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"

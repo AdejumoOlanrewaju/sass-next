@@ -1,9 +1,7 @@
 "use client"
-import Image from "next/image";
 import Hero from "../components/Hero";
 import PostCategory from "../components/PostCategory";
 import Newsletter from "../components/Newsletter";
-import TrendingStories from "../components/TrendingStories";
 import SocialLinks from "../components/SocialLinks";
 import CategorySidebar from "../components/CategorySidebar";
 import { usePostStore } from "@/store/PostStore";
