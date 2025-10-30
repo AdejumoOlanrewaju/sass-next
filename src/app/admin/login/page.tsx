@@ -69,7 +69,7 @@ const Page = () => {
         <div className='flex items-center justify-center w-full'>
             <div className='flex items-center'>
                 {/* Right side - Login form */}
-                <Card className="w-[90%] sm:w-[500px] mx-auto border-gray-200 bg-white shadow-2xl">
+                <Card className="w-[90%] sm:w-[500px] mx-auto border-gray-200 py-5 bg-white shadow-2xl">
                     <CardHeader className="space-y-1 text-center pb-8">
                         <div className="flex justify-center mb-6">
                             <div className="relative">
@@ -93,7 +93,7 @@ const Page = () => {
                     </CardHeader>
 
                     <CardContent className="space-y-5">
-                        <form action="" ref={formRef} className='flex flex-col gap-4'>
+                        <form action="" ref={formRef} className='flex flex-col gap-5'>
                             <div className="space-y-2">
                                 <Label htmlFor="email" className="text-gray-700 font-medium">Email</Label>
                                 <div className="relative group">
@@ -131,15 +131,7 @@ const Page = () => {
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-between text-sm">
-                                <label className="flex items-center space-x-2 cursor-pointer group">
-                                    <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-600 focus:ring-offset-0" />
-                                    <span className="text-gray-600 group-hover:text-gray-800 transition-colors">Remember me</span>
-                                </label>
-                                <a href="#" className="text-blue-600 hover:text-blue-700 font-medium transition-colors hover:underline">
-                                    Forgot password?
-                                </a>
-                            </div>
+                          
 
                             <Button
                                 onClick={(e) => handleLogin(e)}

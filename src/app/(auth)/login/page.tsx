@@ -28,6 +28,7 @@ export default function LoginPage() {
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+        setGoogleSignin(false)
         if (!email || !password) {
             toast.error("Please fill in all required fields.");
             return;
@@ -226,13 +227,9 @@ export default function LoginPage() {
                                 </div>
 
                                 <div className="flex items-center justify-between text-sm">
-                                    <label className="flex items-center space-x-2 cursor-pointer group">
-                                        <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-600 focus:ring-offset-0" />
-                                        <span className="text-gray-600 group-hover:text-gray-800 transition-colors">Remember me</span>
-                                    </label>
-                                    <a href="#" className="text-blue-600 hover:text-blue-700 font-medium transition-colors hover:underline">
+                                    <Link href="/forgot-password" className="text-blue-600 hover:text-blue-700 font-medium transition-colors hover:underline">
                                         Forgot password?
-                                    </a>
+                                    </Link>
                                 </div>
 
                                 <Button

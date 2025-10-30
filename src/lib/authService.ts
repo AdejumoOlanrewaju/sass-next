@@ -16,9 +16,8 @@ export const storeUserInfo = async (user: User | null) => {
       email: user.email,
       createdAt: serverTimestamp(),
     });
-    console.log("✅ New user stored:", user.email);
   } else {
-    console.log("ℹ️ User already exists:", user.email);
+    return null
   }
 };
 

@@ -197,7 +197,6 @@ export default function LoginPage() {
                                     </div>
                                 </div>
 
-
                                 <div className="space-y-2">
                                     <Label htmlFor="email" className="text-gray-700 font-medium">Email</Label>
                                     <div className="relative group">
