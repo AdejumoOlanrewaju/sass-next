@@ -266,13 +266,13 @@ export default function Page() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Recent Posts */}
             <Card className="lg:col-span-2 border-0 shadow-xs shadow-blue-50/">
-              <CardHeader className="flex flex-row items-center justify-between pb-6 border-b border-slate-100">
+              <CardHeader className="flex flex-row items-center justify-between px-4 sm:px-6 pb-6 pt-5 border-b border-slate-100">
                 <div>
                   <CardTitle className="text-2xl font-bold text-slate-900">Recent Posts</CardTitle>
                   <CardDescription className="text-slate-500 mt-1">Manage and monitor your content</CardDescription>
                 </div>
               </CardHeader>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 px-4 sm:px-6">
                 <div className="space-y-3">
                   {recentPosts
                     .map((post) => (
@@ -280,7 +280,7 @@ export default function Page() {
                         <div className="flex items-start justify-between mb-3">
                           <div className="flex-1">
                             <h4 className="font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{post.title}</h4>
-                            <div className="flex items-center gap-3 text-xs text-slate-500">
+                            <div className="flex items-center flex-wrap gap-3 text-xs text-slate-500">
                               <span className={`px-3 py-1 rounded-full font-semibold ${post.status === 'Published'
                                 ? 'bg-emerald-100 text-emerald-700'
                                 : 'bg-amber-100 text-amber-700'
