@@ -30,7 +30,8 @@ import {
     AlignRight,
     Heading1,
     Heading2,
-    FileText
+    FileText,
+    Menu
 
 } from 'lucide-react';
 import PostEditor from '@/app/components/PostEditor';
@@ -40,6 +41,7 @@ import { addPost, deletePost, updatePost } from "@/lib/postDataService";
 import { toast } from "sonner";
 import { serverTimestamp } from 'firebase/firestore';
 import { addActivity } from '@/lib/activitiesService';
+import { useSidebarToggle } from '@/lib/context/SidebarContext';
 
 export default function PostManagement() {
     const [view, setView] = useState('list'); // 'list' or 'editor'
@@ -49,7 +51,7 @@ export default function PostManagement() {
     const [posts, setPosts] = useState<Posts[]>([]);
     const [loading, setLoading] = useState(false)
     const [searchTerm, setSearchTerm] = useState("");
-
+    const { toggleIsOpen } = useSidebarToggle()
 
     const postDate = new Date().toISOString().split("T")[0];
     useEffect(() => {
@@ -187,14 +189,20 @@ export default function PostManagement() {
             <div className="lg:ml-64 h-full">
                 {/* Header */}
                 <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 shadow-sm">
-                    <div className="flex items-center justify-between px-8 py-4">
-                        <div>
-                            <h2 className="text-2xl font-bold text-slate-900">
-                                {view === 'list' ? 'Post Management' : (editingPost ? 'Edit Post' : 'Create New Post')}
-                            </h2>
-                            <p className="text-sm text-slate-500 mt-0.5">
-                                {view === 'list' ? `${posts.length} total posts` : 'Write and publish your content'}
-                            </p>
+                    <div className="flex items-center flex-wrap gap-5 justify-between px-5 sm:px-8 py-4">
+                        <div className='flex gap-3'>
+                            <button onClick={toggleIsOpen} className='flex lg:hidden text-black w-9 h-9 bg-gray-300 items-center justify-center rounded'>
+                                <Menu />
+                            </button>
+                            <div>
+                                <h2 className="text-base sm:text-2xl font-bold text-slate-900">
+                                    {view === 'list' ? 'Post Management' : (editingPost ? 'Edit Post' : 'Create New Post')}
+                                </h2>
+                                <p className="text-sm text-slate-500 mt-0.5">
+                                    {view === 'list' ? `${posts.length} total posts` : 'Write and publish your content'}
+                                </p>
+                            </div>
+
                         </div>
 
                         {view === 'list' ? (
@@ -215,19 +223,19 @@ export default function PostManagement() {
                                     <X className="w-4 h-4 mr-2" />
                                     Cancel
                                 </Button>
-                                <Button
+                                {/* <Button
 
                                     className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/30"
                                 >
                                     <Save className="w-4 h-4 mr-2" />
                                     {formData.status === 'Published' ? 'Publish' : 'Save Draft'}
-                                </Button>
+                                </Button> */}
                             </div>
                         )}
                     </div>
                 </header>
 
-                <div className="p-8 bg-slate-50 h-full">
+                <div className="p-5 sm:p-8 bg-slate-50 h-full">
                     {view === 'list' ? (
                         // List View
                         <>

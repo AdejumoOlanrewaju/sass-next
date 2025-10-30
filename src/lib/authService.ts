@@ -35,18 +35,18 @@ export const getUserInfo = (callback: (users: any[]) => void) => {
   return unsubscribe;
 };
 
-export const adminLogin = async (email: string, password: string): Promise<{ user: User, isAdmin: boolean } | null> => {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
+export const adminLogin = async (email: string, password: string) => {
+  const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  const user = userCredential.user;
 
-    // Option A: Simple check by email
-    if (user.email === "admin@telexcrimson.com") {
-        return { user, isAdmin: true };
-    }
+  // Refresh token to ensure claims are up to date
+  const token = await user.getIdTokenResult(true);
 
-    return null
+  const isAdmin = token.claims.admin === true;
 
+  return { user, isAdmin };
 };
+
 
 
 export const logoutAdmin = async () => {

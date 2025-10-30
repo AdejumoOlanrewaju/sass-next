@@ -14,15 +14,18 @@ import {
   Calendar,
   User,
   Tag,
+  Menu,
 
 
 } from 'lucide-react';
 import { getUserInfo } from '@/lib/authService';
 import LoadingOverlay from '@/app/components/LoadingOverlay';
 import { UserInfoType } from '@/app/types/types';
+import { useSidebarToggle } from '@/lib/context/SidebarContext';
 const Page = () => {
   const [userData, setUserData] = useState<UserInfoType[]>([])
   const [loading, setLoading] = useState<boolean>(false)
+  const { toggleIsOpen } = useSidebarToggle()
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -50,24 +53,29 @@ const Page = () => {
   return (
     <div className='min-h-screen w-full flex flex-col items-center justify-center'>
       {/* Main Content */}
-      <div className="lg:ml-64 h-full w-[calc(100%-256px)]">
+      <div className="lg:ml-64 h-full w-full lg:w-[calc(100%-256px)]">
         {/* Header */}
         <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 shadow-sm">
-          <div className="flex items-center justify-between px-8 py-4">
-            <div>
-              <h2 className="text-2xl font-bold text-slate-900">
-                User Management
-              </h2>
-              <p className="text-sm text-slate-500 mt-0.5">
-                All new and existing users
-              </p>
+          <div className="flex items-center justify-between px-5 sm:px-8 py-4">
+            <div className="flex items-center gap-2">
+              <button onClick={toggleIsOpen} className='flex lg:hidden text-black w-9 h-9 bg-gray-300 items-center justify-center rounded'>
+                <Menu />
+              </button>
+              <div>
+                <h2 className="text-xl lg:text-2xl font-bold text-slate-900">
+                  User Management
+                </h2>
+                <p className="text-sm text-slate-500 mt-0.5">
+                  All new and existing users
+                </p>
+              </div>
             </div>
 
 
           </div>
         </header>
 
-        <div className="p-8 bg-slate-50 h-full">
+        <div className="p-5 sm:p-8 bg-slate-50 h-full">
           {/* Posts List */}
           <Card className="border-0 shadow-lg shadow-slate-200/50">
             <CardContent className="p-0">
@@ -93,9 +101,9 @@ const Page = () => {
                       </tr>
                     ) : (userData.map((user, index) => {
                       const userCreatedDate =
-                                              typeof user.createdAt === "object" && "toDate" in user.createdAt
-                                                ? user.createdAt.toDate()
-                                                : new Date(user.createdAt as any); 
+                        typeof user.createdAt === "object" && "toDate" in user.createdAt
+                          ? user.createdAt.toDate()
+                          : new Date(user.createdAt as any);
                       return (
                         <tr key={index} className="hover:bg-slate-50 transition-colors">
                           <td className="px-6 py-4">

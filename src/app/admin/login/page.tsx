@@ -67,7 +67,7 @@ const Page = () => {
     };
     return (
         <div className='flex items-center justify-center w-full'>
-            <div className='flex items-center'>
+            <div className='flex items-center w-full'>
                 {/* Right side - Login form */}
                 <Card className="w-[90%] sm:w-[500px] mx-auto border-gray-200 py-5 bg-white shadow-2xl">
                     <CardHeader className="space-y-1 text-center pb-8">

@@ -22,3 +22,11 @@
 //     // return unsubscribe;
 //   },
 // }));
+
+// export const useSideToggle = create((set) => ({
+//     isOpen : false,
+
+//     toggleIsOpen : () => {
+//         set({isOpen : !isOpen})
+//     }
+// }))

@@ -21,25 +21,32 @@ import {
   Clock,
   Target,
   Zap,
-  Code
+  Code,
+  X
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useSidebarToggle } from '@/lib/context/SidebarContext';
 const SidebarAdmin = () => {
   const pathName = usePathname()
+  const {isOpen, toggleIsOpen} = useSidebarToggle()
   return (
     <div>
       {/* Sidebar Navigation */}
-      <aside className="fixed left-0 top-0 h-full w-64 bg-white border-r border-slate-200 hidden lg:block">
-        <div className="p-6">
+      <aside className={`fixed left-0 top-0 h-full w-64 bg-white border-r border-slate-200 block transition-all duration-300 -translate-x-full z-99 lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="p-6 relative">
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-linear-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
               <Code className="w-5 h-5 text-white" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-slate-900">TelexBlog</h1>
               <p className="text-xs text-slate-500">Admin Dashboard</p>
             </div>
+
+            <button onClick={toggleIsOpen} className='text-black rounded w-9 h-9 flex lg:hidden items-center justify-center bg-gray-100 absolute top-3 right-3'>
+              <X className='w-6 h-6'/>
+            </button>
           </div>
 
           <nav className="space-y-1">

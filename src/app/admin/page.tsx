@@ -22,7 +22,8 @@ import {
   Calendar,
   Clock,
   Target,
-  Zap
+  Zap,
+  Menu
 } from 'lucide-react';
 import { usePostStore } from '@/store/PostStore';
 import { toDate } from "date-fns"
@@ -35,14 +36,17 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '@/lib/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import { logoutAdmin } from '@/lib/authService';
+import useAdminAuthGuard from '@/lib/hooks/useAdminAuthGuard';
+import { useSidebarToggle } from '@/lib/context/SidebarContext';
 export default function Page() {
   const [subscribers, setSubsribers] = useState<any>([])
   const [engagementRate, setEngagementRate] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [authLoading, setAuthLoading] = useState(true);
   const [engagementData, setEngagementData] = useState<{ [key: string]: { likes: number; comments?: number } }>({});
   const { storePostData, loading } = usePostStore()
   const { storeActivitiesData } = useActivitiesStore()
+  const { authLoading, isAdmin } = useAdminAuthGuard()
+  const { toggleIsOpen } = useSidebarToggle()
   const router = useRouter()
 
   const today = new Date();
@@ -70,30 +74,6 @@ export default function Page() {
       return bDate.getTime() - aDate.getTime();
     })
     .slice(0, 5);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        router.push("/admin/login");
-        return;
-      }
-
-      // check role or email
-      const docSnap = await getDoc(doc(db, "users", user.uid));
-      const isAdmin =
-        user.email === "admin@telexcrimson.com" ||
-        (docSnap.exists() && docSnap.data().role === "admin");
-
-      if (!isAdmin) {
-        router.push("/"); // redirect if not admin
-      } else {
-        setAuthLoading(false);
-
-      }
-    });
-
-    return () => unsubscribe();
-  }, [router]);
 
   useEffect(() => {
     const fetchSubscribers = () => {
@@ -144,6 +124,10 @@ export default function Page() {
 
   if (loading || authLoading || storePostData.length === 0) {
     return <LoadingOverlay />
+  }
+
+  if (!isAdmin) {
+    router.push("/admin/login")
   }
   // Sort by views in descending order
   const topPosts = [...storePostData]
@@ -202,13 +186,18 @@ export default function Page() {
       <div className="lg:ml-64">
         {/* Top Header */}
         <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 shadow-sm">
-          <div className="flex items-center justify-between px-8 py-4">
+          <div className="flex items-center justify-between px-5 sm:px-8 py-4">
             <div className="flex items-center gap-4">
+              <button onClick={toggleIsOpen} className='flex lg:hidden text-black w-9 h-9 bg-gray-300 items-center justify-center rounded'>
+                <Menu />
+              </button>
               <div>
                 <h2 className="text-2xl font-bold text-slate-900">Dashboard</h2>
                 <p className="text-sm text-slate-500 flex items-center gap-2 mt-0.5">
                   <Calendar className="w-3.5 h-3.5" />
-                  {formattedDate}
+                  <span className='truncate max-w-[150px]'>
+                    {formattedDate}
+                  </span>
                 </p>
               </div>
             </div>
@@ -221,10 +210,10 @@ export default function Page() {
                   className="pl-10 w-80 bg-slate-50/80 border-slate-200 focus:bg-white transition-colors"
                 />
               </div> */}
-              <Button variant="outline" size="icon" className="relative border-slate-200 hover:bg-slate-50">
+              {/* <Button variant="outline" size="icon" className="relative border-slate-200 hover:bg-slate-50">
                 <Bell className="w-5 h-5 text-slate-600" />
                 <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white"></span>
-              </Button>
+              </Button> */}
               <Button variant="outline" className='text-black' onClick={handleLogout}>
                 Logout
               </Button>
@@ -242,7 +231,7 @@ export default function Page() {
           </div>
         </header>
 
-        <div className="p-8 bg-slate-50">
+        <div className="p-5 sm:p-8 bg-slate-50">
           {/* Welcome Section */}
           <div className="mb-8">
             <h3 className="text-3xl font-bold text-slate-900 mb-2">Welcome back, Admin 👋</h3>
