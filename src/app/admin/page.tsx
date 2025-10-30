@@ -186,13 +186,13 @@ export default function Page() {
       <div className="lg:ml-64">
         {/* Top Header */}
         <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 shadow-sm">
-          <div className="flex items-center justify-between px-5 sm:px-8 py-4">
+          <div className="flex flex-wrap gap-3 items-center justify-between px-5 sm:px-8 py-4">
             <div className="flex items-center gap-4">
               <button onClick={toggleIsOpen} className='flex lg:hidden text-black w-9 h-9 bg-gray-300 items-center justify-center rounded'>
                 <Menu />
               </button>
               <div>
-                <h2 className="text-2xl font-bold text-slate-900">Dashboard</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Dashboard</h2>
                 <p className="text-sm text-slate-500 flex items-center gap-2 mt-0.5">
                   <Calendar className="w-3.5 h-3.5" />
                   <span className='truncate max-w-[150px]'>
