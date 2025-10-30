@@ -195,7 +195,7 @@ export default function Page() {
                 <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Dashboard</h2>
                 <p className="text-sm text-slate-500 flex items-center gap-2 mt-0.5">
                   <Calendar className="w-3.5 h-3.5" />
-                  <span className='truncate max-w-[150px]'>
+                  <span className='truncate max-w-[230px]'>
                     {formattedDate}
                   </span>
                 </p>
