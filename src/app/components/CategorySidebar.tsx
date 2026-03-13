@@ -14,10 +14,8 @@ const CategorySidebar = () => {
                     {categories.map((category, index) => (
                         <Link href = {`/category/${category}`} key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors cursor-pointer">
                             <div className="flex items-center space-x-3">
-                                {/* <category className="w-4 h-4 text-blue-600 dark:text-blue-400" /> */}
                                 <span className="font-medium text-gray-900 dark:text-white">{category}</span>
                             </div>
-                            {/* <span className="text-sm text-gray-500 dark:text-gray-400">{category}</span> */}
                         </Link>
                     ))}
                 </div>

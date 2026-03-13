@@ -1,26 +1,22 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { Heart, MessageCircle, Share2, MoreVertical, ThumbsUp, Reply, Send, Smile, Image as ImageIcon } from 'lucide-react';
+import { Heart, MessageCircle, Share2, Smile, Image as ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Card } from '@/components/ui/card';
 import { useAuthStore } from '@/store/AuthStore';
-import { addComment, addReply, getComments, getReplies } from '@/lib/commentService';
-// import { useCommentStore } from '@/store/CommentStore';
+import { addComment, addReply, getComments } from '@/lib/commentService';
 import { Comment } from '../types/types';
-import { toDate } from 'date-fns';
 import CommentItem from './CommentItem';
 import { togglePostLike, getPostLikes, hasUserLikedPost } from "@/lib/postDataService";
 import { useRouter } from 'next/navigation';
 export default function CommentSystem({ postId }: { postId: string }) {
     const [comments, setComments] = useState<Comment[]>([]);
     const { user } = useAuthStore()
-    // const { storeCommentData } = useCommentStore()
     const [newComment, setNewComment] = useState('');
     const [replyingTo, setReplyingTo] = useState<string | null>(null);
     const [replyText, setReplyText] = useState('');
-    const [likedComments, setLikedComments] = useState(new Set());
     const [liked, setLiked] = useState(false);
     const [likeCount, setLikeCount] = useState(0);
     const userFirstLetter = user?.displayName?.slice(0, 1)
@@ -38,8 +34,6 @@ export default function CommentSystem({ postId }: { postId: string }) {
 
 
     useEffect(() => {
-        // if (!user) return;
-
         let mounted = true;
 
         (async () => {
@@ -186,14 +180,7 @@ export default function CommentSystem({ postId }: { postId: string }) {
                                 className="min-h-[120px] bg-gray-50 border-gray-300 focus:border-blue-600 focus:ring-blue-600 sm:resize-none mb-3"
                             />
                             <div className="flex items-center justify-between">
-                                <div className="flex space-x-2">
-                                    <Button variant="ghost" size="sm" className="text-gray-500 hover:text-blue-600 hover:bg-blue-50">
-                                        <Smile className="w-5 h-5" />
-                                    </Button>
-                                    <Button variant="ghost" size="sm" className="text-gray-500 hover:text-blue-600 hover:bg-blue-50">
-                                        <ImageIcon className="w-5 h-5" />
-                                    </Button>
-                                </div>
+                                
                                 <Button
                                     onClick={handlePostComment}
                                     className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6"

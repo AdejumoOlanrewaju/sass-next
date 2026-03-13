@@ -1,5 +1,5 @@
 "use client"
-import React, { FormEvent, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, ArrowRight, Pen, BookOpen, Sparkles, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -70,6 +70,7 @@ export default function LoginPage() {
             return
         } finally {
             reset()
+            setGoogleSignin(false)
         }
     }
 
@@ -153,10 +154,6 @@ export default function LoginPage() {
                         </div>
                     </div>
 
-                    {/* <div className="text-center space-y-2 mt-8">
-                        <h2 className="text-3xl font-bold text-gray-800">Share Your Stories</h2>
-                        <p className="text-gray-600 text-lg">Create, inspire, and connect with readers worldwide</p>
-                    </div> */}
                 </div>
                 <div className='flex items-center'>
                     {/* Right side - Login form */}
@@ -164,11 +161,11 @@ export default function LoginPage() {
                         <CardHeader className="space-y-1 text-center pb-8">
                             <div className="flex justify-center mb-6">
                                 <div className="relative">
-                                    {/* <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg transform rotate-6 hover:rotate-12 transition-transform duration-300">
-                                        <Pen className="text-white w-8 h-8" strokeWidth={2.5} />
-                                    </div> */}
-                                    <img className='w-10 h-10' src="./logo.png" alt="Logo Image" />
-
+                                    <Link href={'/'}>
+                                        <div className="flex items-center space-x-2">
+                                            <img className='w-10 h-10' src="./logo.png" alt="Logo Image" />
+                                        </div>
+                                    </Link>
                                     <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-400 rounded-full animate-ping"></div>
                                 </div>
                             </div>

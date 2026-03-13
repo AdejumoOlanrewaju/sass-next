@@ -4,15 +4,10 @@ import { db } from "./firebaseConfig";
 import {
     addDoc,
     collection,
-    deleteDoc,
-    doc,
     onSnapshot,
-    updateDoc,
     serverTimestamp,
     query,
     orderBy,
-    getDocs,
-    where,
 } from "firebase/firestore";
 type ActivityParamType = {
     type: string;

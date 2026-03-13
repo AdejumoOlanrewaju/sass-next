@@ -1,25 +1,10 @@
 "use client"
 import React from 'react'
-import { Button } from '@/components/ui/button';
 import {
-  Eye,
-  ThumbsUp,
-  MessageSquare,
-  TrendingUp,
   Users,
   FileText,
   BarChart3,
-  Plus,
-  Search,
-  Bell,
   Settings,
-  MoreVertical,
-  Edit,
-  Trash2,
-  ArrowUp,
-  Calendar,
-  Clock,
-  Target,
   Zap,
   Code,
   X
@@ -76,18 +61,7 @@ const SidebarAdmin = () => {
           </nav>
         </div>
 
-        <div className="absolute bottom-6 left-6 right-6">
-          <div className="p-4 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
-            <div className="flex items-center gap-2 mb-2">
-              <Zap className="w-5 h-5" />
-              <span className="font-semibold">Upgrade to Pro</span>
-            </div>
-            <p className="text-xs text-blue-100 mb-3">Get unlimited posts and advanced analytics</p>
-            <Button className="w-full bg-white text-blue-600 hover:bg-blue-50 font-semibold">
-              Upgrade Now
-            </Button>
-          </div>
-        </div>
+        
       </aside>
     </div>
   )

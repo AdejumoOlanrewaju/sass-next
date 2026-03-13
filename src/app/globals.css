@@ -162,5 +162,30 @@ button{
   .content-container p.empty{
       line-height: 1.1;
   }
+
+  .nav-link{
+    position : relative;
+    transition : width .3s ease;
+  }
+
+  .nav-link::after{
+    position : absolute;
+    content : "";
+    left : 0;
+    bottom : -5px;
+    width : 0%;
+    height : 2px;
+    border-radius : 5px;
+    background-color : black;
+    transition : all .3s ease;
+  }
+
+  .nav-link:hover::after{
+    width : 100%;
+  }
+
+  .nav-link.active::after{
+    width : 100%;
+  }
 }
 

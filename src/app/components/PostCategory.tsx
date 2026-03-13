@@ -3,7 +3,6 @@
 import { Calendar, Clock, Tag } from 'lucide-react';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { usePostStore } from '@/store/PostStore';
 
 const PostCategory = () => {

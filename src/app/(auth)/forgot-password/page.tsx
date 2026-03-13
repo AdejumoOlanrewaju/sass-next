@@ -2,12 +2,9 @@
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "@/lib/firebaseConfig";
 import { useState } from "react";
-import { toast } from "sonner"; // or your preferred toast library
-import { Eye, EyeOff, Mail, Lock, ArrowRight, Pen, BookOpen, Sparkles, Code } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { toast } from "sonner"; 
+import { Pen, BookOpen, Sparkles, Code } from 'lucide-react';
+
 
 
 export default function ForgotPasswordPage() {
@@ -38,9 +35,7 @@ export default function ForgotPasswordPage() {
         <>
             <div className="min-h-screen flex  justify-center bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden">
                 {/* Decorative elements */}
-                {/* <div className="absolute top-10 left-12 w-20 h-20 bg-blue-100 rounded-full opacity-50 animate-pulse"></div> */}
                 <div className="absolute top-60 right-20 w-32 h-32 bg-blue-50 rounded-full opacity-50 animate-pulse" style={{ animationDelay: '1s' }}></div>
-                {/* <div className="absolute top-[30%] right-[40%] w-16 h-16 bg-blue-100 rounded-full opacity-30 animate-pulse" style={{ animationDelay: '2s' }}></div> */}
 
                 <div className="w-full  grid lg:grid-cols-2 relative z-10">
                     {/* Left side - Illustration */}
@@ -115,10 +110,7 @@ export default function ForgotPasswordPage() {
                             </div>
                         </div>
 
-                        {/* <div className="text-center space-y-2 mt-8">
-                        <h2 className="text-3xl font-bold text-gray-800">Share Your Stories</h2>
-                        <p className="text-gray-600 text-lg">Create, inspire, and connect with readers worldwide</p>
-                    </div> */}
+                    
                     </div>
                     <div className="flex items-center justify-center">
                         <form

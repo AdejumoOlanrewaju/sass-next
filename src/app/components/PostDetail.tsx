@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect } from 'react'
-import { Posts } from '../types/types'
 import { Calendar, Clock } from 'lucide-react'
 import { usePostStore } from '@/store/PostStore'
 import { getPostViewsBySlug } from '@/lib/postDataService'

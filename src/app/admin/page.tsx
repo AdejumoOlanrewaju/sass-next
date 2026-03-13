@@ -250,10 +250,6 @@ export default function Page() {
                       <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center shadow-lg`}>
                         <Icon className="w-6 h-6 text-white" />
                       </div>
-                      <div className="flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
-                        <ArrowUp className="w-3.5 h-3.5" />
-                        <span className="text-sm font-semibold">{stat.change}</span>
-                      </div>
                     </div>
                     <h3 className="text-3xl font-bold text-slate-900 mb-1">{stat.value}</h3>
                     <p className="text-sm font-medium text-slate-600">{stat.label}</p>
@@ -266,7 +262,7 @@ export default function Page() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Recent Posts */}
             <Card className="lg:col-span-2 border-0 shadow-xs shadow-blue-50/">
-              <CardHeader className="flex flex-row items-center justify-between px-4 sm:px-6 pb-6 pt-5 border-b border-slate-100">
+              <CardHeader className="flex flex-row items-center justify-between px-4 sm:px-6 pb-6  border-b border-slate-100">
                 <div>
                   <CardTitle className="text-2xl font-bold text-slate-900">Recent Posts</CardTitle>
                   <CardDescription className="text-slate-500 mt-1">Manage and monitor your content</CardDescription>

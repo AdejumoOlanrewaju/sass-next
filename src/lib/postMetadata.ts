@@ -1,4 +1,4 @@
-import { getPostsServer } from "./post";
+import { getPostsServer } from "./postServer";
 
 export const getPostMetadata = async (slug: string) => {
   const posts = await getPostsServer()

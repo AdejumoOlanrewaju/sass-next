@@ -1,6 +1,5 @@
 "use client";
 import { create } from "zustand";
-import { getPosts } from "@/lib/postDataService";
 import { Activities } from "@/app/types/types";
 import { getActivities } from "@/lib/activitiesService";
 

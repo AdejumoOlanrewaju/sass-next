@@ -1,8 +1,8 @@
 import { timeAgo } from "@/lib/utils";
-import { Heart, MessageCircle, Share2, MoreVertical, ThumbsUp, Reply, Send, Smile, Image as ImageIcon } from 'lucide-react';
+import { Reply, Send, Image as ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Comment } from "../types/types";
 import { useEffect, useState } from "react";
 import { getReplies } from "@/lib/commentService";
@@ -56,13 +56,7 @@ export default function CommentItem({
                             <span className="text-gray-400 text-sm">•</span>
                             <span className="text-gray-500 text-xs sm:text-sm">{timeAgo(date)}</span>
                         </div>
-                        {/* <Button
-                            variant="ghost"
-                            size="sm"
-                            className="h-8 w-8 p-0 hover:bg-gray-200"
-                        >
-                            <MoreVertical className="w-4 h-4 text-gray-500" />
-                        </Button> */}
+                        
                     </div>
 
                     <p className="text-gray-700 leading-relaxed">{comment.commentText}</p>
@@ -81,7 +75,7 @@ export default function CommentItem({
                 {replyingTo === comment.id && (
                     <div className="mt-4 sm:ml-2 flex space-x-2">
                         <Avatar className=" w-6 h-6 sm:w-8 sm:h-8 border-2 border-blue-100">
-                            <AvatarFallback className="bg-gradient-to-br from-blue-600 to-blue-400 text-white text-xs font-semibold">
+                            <AvatarFallback className="bg-linear-to-br from-blue-600 to-blue-400 text-white text-xs font-semibold">
                                 Y
                             </AvatarFallback>
                         </Avatar>
@@ -90,7 +84,7 @@ export default function CommentItem({
                                 value={replyText}
                                 onChange={(e) => setReplyText(e.target.value)}
                                 placeholder="Write a reply..."
-                                className="min-h-[80px] bg-white border-gray-300 focus:border-blue-600 focus:ring-blue-600 resize-none"
+                                className="min-h-20 bg-white border-gray-300 focus:border-blue-600 focus:ring-blue-600 resize-none"
                             />
                             <div className="flex sm:flex-col space-y-2">
                                 <Button
@@ -115,21 +109,6 @@ export default function CommentItem({
                         </div>
                     </div>
                 )}
-
-                {/* {comment.replies &&
-          comment.replies.length > 0 &&
-          comment.replies.map((reply: any) => (
-            <CommentItem
-              key={reply.id}
-              comment={reply}
-              isReply
-              replyingTo={replyingTo}
-              setReplyingTo={setReplyingTo}
-              replyText={replyText}
-              setReplyText={setReplyText}
-              handlePostReply={handlePostReply}
-            />
-          ))} */}
 
                 {/* Replies section */}
                 {replies.length > 0 && (

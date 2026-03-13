@@ -6,11 +6,9 @@ import SocialLinks from "../components/SocialLinks";
 import CategorySidebar from "../components/CategorySidebar";
 import { usePostStore } from "@/store/PostStore";
 import LoadingOverlay from "../components/LoadingOverlay";
-import { useAuthStore } from "@/store/AuthStore";
 
 export default function Home() {
   const { loading, storePostData } = usePostStore()
-  const {user} = useAuthStore()
   if(loading || storePostData.length === 0){
     return <LoadingOverlay/>
   }
@@ -22,7 +20,6 @@ export default function Home() {
         <CategorySidebar/>
       </div>
       <Newsletter/>
-      {/* <TrendingStories/> */}
       <SocialLinks/>
     </div>
   );

@@ -1,13 +1,12 @@
 "use client"
 import React, { useRef, useState } from 'react'
-import { Eye, EyeOff, Mail, Lock, ArrowRight, Pen, BookOpen, Sparkles, Code } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, ArrowRight, Code } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import { toast } from 'sonner';
-import { useAuthStore } from '@/store/AuthStore';
 import { useRouter } from 'next/navigation';
 import { adminLogin } from '@/lib/authService';
 import { getFirebaseErrorMessage } from '@/lib/utils';
@@ -16,7 +15,6 @@ const Page = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { user, loginWithEmail } = useAuthStore()
     const [loading, setLoading] = useState(false)
     const formRef = useRef<HTMLFormElement>(null)
     const router = useRouter()
@@ -78,7 +76,6 @@ const Page = () => {
                                         <div className="w-8 h-8 bg-linear-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                                             <Code className="w-5 h-5 text-white" />
                                         </div>
-                                        {/* <span className='font-medium italic text-xl tracking-[1px]'>TelexBlog</span> */}
                                     </div>
                                 </Link>
                                 <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-400 rounded-full animate-ping"></div>

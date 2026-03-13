@@ -11,9 +11,7 @@ const ReactQuill = dynamic(() => import("react-quill-new"), {
     loading: () => <p>Loading editor...</p>,
 })
 import 'react-quill-new/dist/quill.snow.css'
-import { toast } from "sonner"
 import { FileText, Image as ImageIcon, Tag, Clock, FolderOpen, Sparkles } from "lucide-react"
-import { addPost } from "@/lib/postDataService"
 
 export default function PostEditor({formData, setFormData, onSave, loading, editingPost}: any) {
 

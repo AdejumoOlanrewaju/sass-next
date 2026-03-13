@@ -1,6 +1,6 @@
 "use client"
-import React, { ElementType, useEffect, useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import React, { useEffect, useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -9,28 +9,9 @@ import {
     Edit,
     Trash2,
     Eye,
-    Filter,
-    MoreVertical,
-    Save,
     X,
     Calendar,
-    User,
     Tag,
-    Image,
-    Bold,
-    Italic,
-    Underline,
-    List,
-    ListOrdered,
-    Link,
-    Code,
-    Quote,
-    AlignLeft,
-    AlignCenter,
-    AlignRight,
-    Heading1,
-    Heading2,
-    FileText,
     Menu
 
 } from 'lucide-react';
@@ -117,7 +98,6 @@ export default function PostManagement() {
             status: "Published",
         }
 
-        console.log(data)
         try {
             if (editingPost === null) {
                 setLoading(true)

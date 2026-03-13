@@ -1,6 +1,6 @@
 "use client"
-import React, { FormEvent, useRef, useState } from 'react';
-import { Eye, EyeOff, Mail, Lock, ArrowRight, Pen, BookOpen, Sparkles, Code } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { Eye, EyeOff, Mail, Lock, ArrowRight, Pen, BookOpen, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -16,7 +16,7 @@ export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { user, loginWithEmail, loading, loginWithGoogle } = useAuthStore()
+    const { loginWithEmail, loading, loginWithGoogle } = useAuthStore()
     const formRef = useRef<HTMLFormElement>(null)
     const router = useRouter()
     const [googleSignin, setGoogleSignin] = useState(false)
@@ -154,11 +154,6 @@ export default function LoginPage() {
                             </div>
                         </div>
                     </div>
-
-                    {/* <div className="text-center space-y-2 mt-8">
-                        <h2 className="text-3xl font-bold text-gray-800">Share Your Stories</h2>
-                        <p className="text-gray-600 text-lg">Create, inspire, and connect with readers worldwide</p>
-                    </div> */}
                 </div>
                 <div className='flex items-center'>
                     {/* Right side - Login form */}
@@ -168,12 +163,7 @@ export default function LoginPage() {
                                 <div className="relative">
                                     <Link href={'/'}>
                                         <div className="flex items-center space-x-2">
-                                            {/* <div className="w-8 h-8 bg-linear-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                                                <Code className="w-5 h-5 text-white" />
-                                            </div> */}
                                             <img className='w-10 h-10' src="./logo.png" alt="Logo Image" />
-
-                                            {/* <span className='font-medium italic text-xl tracking-[1px]'>TelexBlog</span> */}
                                         </div>
                                     </Link>
                                     <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-400 rounded-full animate-ping"></div>

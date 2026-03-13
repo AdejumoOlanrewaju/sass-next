@@ -96,9 +96,11 @@ export default function AboutPage() {
       <section className="px-6 lg:px-20 py-20 bg-gray-100 dark:bg-gray-800">
         <div className="max-w-[1560px] mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">Meet the Team</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-center">
             {[
-              { name: "Olanrewaju Adejumo", role: "Founder & Editor", img: "./profile-picture.jpg" },
+              { name: "Sam Chris", role: "Founder & Editor", img: "./profile-picture.jpg" },
+              { name: "John Doe", role: "Designer", img: "./profile-picture.jpg" },
+              { name: "Fedrick Barney", role: "Content Creator", img: "./profile-picture.jpg" },
             ].map((member, i) => (
               <Card
                 key={i}
@@ -106,7 +108,6 @@ export default function AboutPage() {
               >
                 <CardContent className="p-6 flex flex-col items-center text-center">
                   <Avatar className=" w-[120px] h-[120px] mb-4 ring-4 ring-blue-100 dark:ring-gray-700 flex items-center justify-center">
-                    <AvatarImage className=" w-[90px] h-full  object-cover" src={member.img} alt={member.name} />
                     <AvatarFallback >{member.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <h3 className="text-xl font-semibold">{member.name}</h3>
